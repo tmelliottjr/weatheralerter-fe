@@ -66,9 +66,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   img{
     height: 100px;
     width: 100px;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
   }
 </style>
