@@ -3,13 +3,22 @@
     <h1>Subscribe</h1>
     <img v-show='showLoader' src="https://cdn.dribbble.com/users/600626/screenshots/2944614/loading_12.gif" alt="">
     <div class="form-container">
-        <form @submit.prevent="submitForm">
-          <p v-show='submitErrors'>Fix the errors</p>
-          <input v-model='zipCode' @input='submitted = false' type="text" placeholder="Zip Code">
-          <p v-show='zipCode && !validZip'>Not working</p>
-          <input v-model='phoneNumber' @input='submitted = false' type="text" placeholder="Phone Number">
-          <p v-show='phoneNumber && !validPhone'>Not working</p>
-          <input type='submit' value='Subscribe'>
+        <form class='subscribe-form' @submit.prevent="submitForm">
+          <p class='form-error' v-show='submitErrors'>Fix the errors</p>
+          <div class="form-group">
+            <label for='zip-code'>Zip Code</label>
+            <input id='zip-code' v-model='zipCode' @input='submitted = false' type="text">
+            <p class='form-error input' v-show='zipCode && !validZip'>Invalid zip code.</p>
+          </div>
+          <div class="form-group">
+            <label for='phone-number'>Phone Number</label>
+            <input id='phone-number' name='phone-number' v-model='phoneNumber' @input='submitted = false' type="text">
+            <p class='form-error input' v-show='phoneNumber && !validPhone'>Invalid phone number.</p>
+          </div>
+          <div class="form-group">
+            <input id='subscribe' type='submit' value='Subscribe'>
+          </div>
+          
       </form>
     </div>
   </main>
@@ -71,9 +80,51 @@ export default {
     height: 100px;
     width: 100px;
   }
-  
+
+  main {
+    margin-bottom: 60px;
+  }
+
   .form-container {
     display: flex;
+    justify-content: center;
+  }
+  
+  .subscribe-form {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 10px 0;
+  }
+
+  #subscribe {
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  input[type='text'] {
+    text-align: center;
+    width: 150px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    border-bottom: solid 1px #aaa;
+    font-size: 20px;
+  }
+
+  .form-error{
+    color:rgb(230, 81, 81);
+  }
+
+  .form-error.input {
+    font-size: 12px;
+    text-align: left;
+    margin-top: 2px;
   }
 </style>

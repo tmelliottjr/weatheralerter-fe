@@ -37,6 +37,11 @@ export default {
 
 <style>
 
+html {
+  min-height: 100%;
+  position: relative;
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -45,6 +50,7 @@ export default {
 
 body {
     background-color: #FDFDFD;
+    margin-bottom: 100px;
 }
 
 #app {
@@ -53,7 +59,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
   height: 100%;
 }
 
