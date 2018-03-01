@@ -4,27 +4,43 @@
     <img v-show='showLoader' src="https://cdn.dribbble.com/users/600626/screenshots/2944614/loading_12.gif" alt="">
     <div class="form-container">
         <form class='subscribe-form' @submit.prevent="submitForm">
-          <p class='form-error' v-show='submitErrors'>Fix the errors</p>
+          <p class='form-error' v-for="error in formErrors" :key="error" >{{error}}</p>
           <div class="form-group">
             <label for='zip-code'>Zip Code</label>
-            <input id='zip-code' v-model='zipCode' @input='submitted = false' type="text">
-            <p class='form-error input' v-show='zipCode && !validZip'>Invalid zip code.</p>
+            <input 
+              class='form-input' 
+              id='zip-code' 
+              v-model='zipCode' 
+              @input='submitted = false' 
+              pattern='[0-9]*'
+              maxlength="5">
+            <span class='form-error input' :class='{show: (zipCode && !validZip) || (submitted && !zipCode)}'>Invalid zip code.</span>
           </div>
           <div class="form-group">
             <label for='phone-number'>Phone Number</label>
-            <input id='phone-number' name='phone-number' v-model='phoneNumber' @input='submitted = false' type="text">
-            <p class='form-error input' v-show='phoneNumber && !validPhone'>Invalid phone number.</p>
+            <input 
+              class='form-input' 
+              id='phone-number' 
+              name='phone-number' 
+              v-model='phoneNumber' 
+              @input='submitted = false' 
+              type="tel"
+              maxlength="10">
+            <span class='form-error input' :class='{show: (phoneNumber && !validPhone) || (submitted && !phoneNumber)}'>Invalid phone number.</span>
           </div>
           <div class="form-group">
-            <input id='subscribe' type='submit' value='Subscribe'>
-          </div>
-          
+            <input id='subscribe' type='submit' value='SUBSCRIBE'>
+          </div>          
       </form>
     </div>
   </main>
 </template>
 
 <script>
+
+// TODO: Move error feedback logic to methods
+// TODO: Streamline form clear/formErrors
+// TODO: Move reusable CSS to global scope
 
 import axios from 'axios'
 
@@ -43,8 +59,12 @@ export default {
       if (this.submitted) return;
       
       this.submitted = true;
+      this.formErrors = [];
 
-      if (!this.validPhone || !this.validZip) return;
+      if (!this.validPhone || !this.validZip){
+        this.formErrors.push('Please correct the errors to subscribe.');
+        return;
+      }
 
       this.showLoader = true
 
@@ -54,10 +74,11 @@ export default {
       }).then(r => {
         r.status === 200 
           ? this.$emit('subscribe-success', 'Success')  
-          : this.formErrors.push('An unexpected error ocurred.')
+          : this.formErrors.push('An unexpected error has ocurred.')
       }).catch(err => {
         // TODO: Get actual return error
-        this.formErrors.push('An error ocurred try again.')
+        this.formErrors.push('An error has ocurred please try again.')
+        this.showLoader = false;
       })
     }
   },
@@ -81,13 +102,10 @@ export default {
     width: 100px;
   }
 
-  main {
-    margin-bottom: 60px;
-  }
-
   .form-container {
     display: flex;
     justify-content: center;
+    margin: 60px 0 60px 0;
   }
   
   .subscribe-form {
@@ -102,13 +120,28 @@ export default {
     margin: 10px 0 10px 0;
   }
 
-  #subscribe {
-    width: 100px;
-    height: 30px;
-    cursor: pointer;
+  .show {
+    visibility: visible !important;
   }
 
-  input[type='text'] {
+  #subscribe {
+    -webkit-appearance: none;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    background-color: #a7e6d3;
+    color:rgb(113, 156, 156);
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  #subscribe:hover{
+    color:rgb(15, 107, 72);
+  }
+
+  .form-input {
     text-align: center;
     width: 150px;
     height: 30px;
@@ -126,5 +159,11 @@ export default {
     font-size: 12px;
     text-align: left;
     margin-top: 2px;
+    visibility: hidden;
   }
+  label {
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
 </style>
