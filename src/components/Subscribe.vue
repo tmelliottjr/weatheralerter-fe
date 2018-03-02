@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1>Subscribe</h1>
+    <h1>Subsribe</h1>
     <img v-show='showLoader' src="https://cdn.dribbble.com/users/600626/screenshots/2944614/loading_12.gif" alt="">
     <div class="form-container">
         <form class='subscribe-form' @submit.prevent="submitForm">
@@ -29,7 +29,7 @@
             <span class='form-error input' :class='{show: (phoneNumber && !validPhone) || (submitted && !phoneNumber)}'>Invalid phone number.</span>
           </div>
           <div class="form-group">
-            <input id='subscribe' type='submit' value='SUBSCRIBE'>
+            <input class='input-button' id='subscribe' type='submit' value='SUBSCRIBE'>
           </div>          
       </form>
     </div>
@@ -66,14 +66,14 @@ export default {
         return;
       }
 
-      this.showLoader = true
+      //this.showLoader = true
 
-      axios.post('http://10be85ac.ngrok.io/subscribe', {
-        'zip_code': this.validZip,
+      axios.post('http://127.0.0.1:5000/subscribe', {
+        'zip_code': this.zipCode,
         'phone_number': this.phoneNumber,
       }).then(r => {
         r.status === 200 
-          ? this.$emit('subscribe-success', 'Success')  
+          ? this.$emit('subscribe-success', this.phoneNumber)  
           : this.formErrors.push('An unexpected error has ocurred.')
       }).catch(err => {
         // TODO: Get actual return error
@@ -122,23 +122,6 @@ export default {
 
   .show {
     visibility: visible !important;
-  }
-
-  #subscribe {
-    -webkit-appearance: none;
-    width: 100px;
-    height: 40px;
-    cursor: pointer;
-    border: none;
-    border-radius: 2px;
-    background-color: #a7e6d3;
-    color:rgb(113, 156, 156);
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-
-  #subscribe:hover{
-    color:rgb(15, 107, 72);
   }
 
   .form-input {

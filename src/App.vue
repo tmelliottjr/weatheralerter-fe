@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <app-header></app-header>
-    <component :is='formComp' @subscribe-success='onSubscribe'></component>
+    <transition name='fade' mode='out-in'>
+          <component :is='formComp' :phoneNumber=phoneNumber @subscribe-success='onSubscribe'></component>
+    </transition>
     <app-footer></app-footer>
   </div>
 </template>
@@ -17,8 +19,9 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      formComp: 'Subscribe'
+      formComp: 'Subscribe',
+      data: '',
+      phoneNumber: ''
     }
   },
   components: {
@@ -28,8 +31,9 @@ export default {
     Verify: Verify,
   },
   methods: {
-    onSubscribe () {
-      this.formComp = 'Verify'
+    onSubscribe (data) {
+      this.phoneNumber = data;
+      this.formComp = 'Verify';
     }
   }
 }
@@ -48,13 +52,15 @@ html {
   box-sizing: border-box;
 }
 
-body {
+body 
+{
+    font-family: 'Source Sans Pro', sans-serif;
     background-color: #FDFDFD;
     margin-bottom: 100px;
 }
 
-#app {
-  font-family: 'Source Sans Pro', sans-serif;
+#app 
+{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -62,39 +68,83 @@ body {
   height: 100%;
 }
 
-h1, h2 {
+h1, h2 
+{
   font-weight: normal;
 }
 
-ul {
+ul 
+{
   list-style-type: none;
   padding: 0;
 }
 
-li {
+li 
+{
   display: inline-block;
   margin: 0 10px;
 }
 
-a {
+a 
+{
   color: #42b983;
 }
 
-.form-input:focus {
-  outline-width: 0;
-  border-bottom-width: 2px;
-  border-color: #3ad1a4;
-  transition: all .25s ease;
+.form-input 
+{
+  text-align: center;
+  width: 150px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  border-bottom: solid 1.5px #aaa;
+  transition: all .5s;
+  font-size: 20px;
 }
 
-#subscribe:hover
+.form-error{
+  color:rgb(230, 81, 81);
+}
+
+.form-error.input 
+{
+  font-size: 12px;
+  text-align: left;
+  margin-top: 2px;
+  visibility: hidden;
+}
+
+label 
+{
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.form-input:focus 
+{
+  outline-width: 0;
+  border-color: #3ad1a4;
+}
+
+.input-button
 {
     position:relative;
     -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
             box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    transition: all .5s ease;
+        -webkit-appearance: none;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    background-color: #a7e6d3;
+    color:rgb(113, 156, 156);
+    font-weight: bold;
+    letter-spacing: 1px;
 }
-#subscribe:hover:before, #subscribe:hover:after
+.input-button:before, .input_button:after
 {
     content:"";
     position:absolute;
@@ -109,7 +159,7 @@ a {
     -moz-border-radius:100px / 10px;
     border-radius:100px / 10px;
 }
-#subscribe:hover:after
+.input-button:after
 {
     right:10px;
     left:auto;
@@ -120,4 +170,16 @@ a {
             transform:skew(8deg) rotate(3deg);
 }
 
+.input-button:hover 
+{
+  color:rgb(15, 107, 72);
+  transform: translateY(3px)
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s ease;
+}
+.fade-enter, .fade-leave-to
+/* .component-fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>
