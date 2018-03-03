@@ -41,7 +41,7 @@
 // TODO: Move error feedback logic to methods
 // TODO: Streamline form clear/formErrors
 // TODO: Move reusable CSS to global scope
-
+import { stateBus } from '../main'
 import axios from 'axios'
 
 export default {
@@ -72,9 +72,12 @@ export default {
         'zip_code': this.zipCode,
         'phone_number': this.phoneNumber,
       }).then(r => {
-        r.status === 200 
-          ? this.$emit('subscribe-success', this.phoneNumber)  
-          : this.formErrors.push('An unexpected error has ocurred.')
+        if (r.status === 200 ){         
+          stateBus.previousState = this.phoneNumber; 
+          this.$router.push({name:'verify'})
+        } else {
+          this.formErrors.push('An unexpected error has ocurred.');
+        } 
       }).catch(err => {
         // TODO: Get actual return error
         this.formErrors.push('An error has ocurred please try again.')

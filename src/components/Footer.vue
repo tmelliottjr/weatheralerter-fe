@@ -1,6 +1,9 @@
 <template>
   <footer>
-    <p id='copy'>&copy 2018 Simple Weather Alerts</p>
+    <p id='copy'>
+      &copy 2018 
+      <router-link :to="{ name: 'home' }">Simple Weather Alerts</router-link>      
+    </p>
     <a id="contact" href="mailto:contact@tmelliottjr.com?subject=Simple Weather Alerter">contact@tmelliottjr.com</a>
   </footer>
 </template>

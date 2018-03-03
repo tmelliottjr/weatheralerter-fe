@@ -41,17 +41,17 @@
 // TODO: Move error feedback logic to methods
 // TODO: Streamline form clear/formErrors
 // TODO: Move reusable CSS to global scope
-
+import { stateBus } from '../main'
 import axios from 'axios'
 
 export default {
-  props: ['phoneNumber'],
   data () {
     return{
       verifyCode: '',
       formErrors: [],
       submitted: false,
       showLoader: false,
+      phoneNumber: ''
     }
   },
   methods: {
@@ -66,13 +66,14 @@ export default {
         return;
       }
 
-      this.showLoader = true
+      //this.showLoader = true
 
       axios.post('http://localhost:5000/verify', {
         'verification_code': this.verifyCode,
         'phone_number': this.phoneNumber
       }).then(r => {
           // TODO: Success message
+          this.$router.push({name: 'subscribe-success'})
       }).catch(err => {
         // TODO: Get actual return error
         this.formErrors.push('Unable to verify account, please try again.')
@@ -90,6 +91,12 @@ export default {
     submitErrors () {
       return this.submitted && (!this.validCode || !this.validPhone)
     }
+  },
+  created () {
+    this.phoneNumber = stateBus.previousState;
+  },
+  destroyed () {
+    stateBus.previousState = ''
   }
 }
 </script>

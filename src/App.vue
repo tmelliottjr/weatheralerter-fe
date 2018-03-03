@@ -1,8 +1,12 @@
 <template>
   <div id="app">
     <app-header></app-header>
-    <transition name='fade' mode='out-in'>
+    <!-- <transition name='fade' mode='out-in'>
           <component :is='formComp' :phoneNumber=phoneNumber @subscribe-success='onSubscribe'></component>
+    </transition> -->
+    <router-link :to="{ name: 'verify' }">home</router-link>
+    <transition name='fade' mode='out-in'>
+      <router-view :phoneNumber=phoneNumber></router-view>
     </transition>
     <app-footer></app-footer>
   </div>
@@ -33,7 +37,6 @@ export default {
   methods: {
     onSubscribe (data) {
       this.phoneNumber = data;
-      this.formComp = 'Verify';
     }
   }
 }
