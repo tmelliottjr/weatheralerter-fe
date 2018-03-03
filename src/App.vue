@@ -117,10 +117,11 @@ li
 
 .form-error.input 
 {
+  transition: all .5s;
   font-size: 12px;
   text-align: left;
   margin-top: 2px;
-  visibility: hidden;
+  opacity: 0;
 }
 
 label 
@@ -178,6 +179,16 @@ label
          -o-transform:skew(8deg) rotate(3deg);
             transform:skew(8deg) rotate(3deg);
 }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 10px 0;
+  }
+
+  .show {
+    opacity: 1 !important;
+  }
 
 .input-button:hover 
 {

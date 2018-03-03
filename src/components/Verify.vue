@@ -5,7 +5,7 @@
         <form class='verify-form' @submit.prevent="submitForm">
           <h1>Verify</h1>
           <p class='form-error' v-for="error in formErrors" :key="error" >{{error}}</p>
-          <div v-if="!phoneNumber" class="form-group">
+          <div v-if="showPhone" class="form-group">
             <label for='phone-number'>Phone Number</label>
             <input 
               class='form-input' 
@@ -51,7 +51,8 @@ export default {
       formErrors: [],
       submitted: false,
       showLoader: false,
-      phoneNumber: ''
+      phoneNumber: '',
+      showPhone: false,
     }
   },
   methods: {
@@ -93,7 +94,12 @@ export default {
     }
   },
   created () {
-    this.phoneNumber = stateBus.previousState;
+    try {
+      this.phoneNumber = stateBus.previousState;
+    } catch (e) {
+      this.phoneNumber = null;
+    }    
+    this.showPhone = this.phoneNumber ? false : true
   },
   destroyed () {
     stateBus.previousState = ''

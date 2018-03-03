@@ -118,39 +118,4 @@ export default {
     align-items: center;
   }
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin: 10px 0 10px 0;
-  }
-
-  .show {
-    visibility: visible !important;
-  }
-
-  .form-input {
-    text-align: center;
-    width: 150px;
-    height: 30px;
-    background: transparent;
-    border: none;
-    border-bottom: solid 1px #aaa;
-    font-size: 20px;
-  }
-
-  .form-error{
-    color:rgb(230, 81, 81);
-  }
-
-  .form-error.input {
-    font-size: 12px;
-    text-align: left;
-    margin-top: 2px;
-    visibility: hidden;
-  }
-  label {
-    font-weight: bold;
-    letter-spacing: 2px;
-  }
-
 </style>
