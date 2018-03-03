@@ -1,9 +1,9 @@
 <template>
   <main>
-    <h1>Subsribe</h1>
-    <img v-show='showLoader' src="https://cdn.dribbble.com/users/600626/screenshots/2944614/loading_12.gif" alt="">
-    <div class="form-container">
+        <div class="form-container">
+      
         <form class='subscribe-form' @submit.prevent="submitForm">
+          <h1>Subscribe</h1>
           <p class='form-error' v-for="error in formErrors" :key="error" >{{error}}</p>
           <div class="form-group">
             <label for='zip-code'>Zip Code</label>
@@ -42,6 +42,7 @@
 // TODO: Streamline form clear/formErrors
 // TODO: Move reusable CSS to global scope
 import { stateBus } from '../main'
+
 import axios from 'axios'
 
 export default {

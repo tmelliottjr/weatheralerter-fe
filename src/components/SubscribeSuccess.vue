@@ -1,10 +1,7 @@
 <template>
   <main>
     <h1>You've successfully subscribed to receive alerts!</h1>
-    <h4>What's Next?</h4>
-    <p>Every morning at 8:00 EST you'll receive a text message with the day's weather!</p>
-    <h4>What if I don't want to receive alerts any longer?</h4>
-    <p>Simple! Just reply with the word stop to cancel at anytime, though, why would you want to do that!?</p>
+    <faq></faq>
   </main>
 </template>
 
@@ -14,6 +11,7 @@
 // TODO: Streamline form clear/formErrors
 // TODO: Move reusable CSS to global scope
 import { stateBus } from '../main'
+import Faq from '../components/Faq.vue'
 import axios from 'axios'
 
 export default {
@@ -21,12 +19,18 @@ export default {
     return{
 
     }
+  },
+  components: {
+    Faq: Faq
   }
 
 }
 </script>
 
 <style>
+.faq-question {
+  height: 100;
+}
   img{
     height: 100px;
     width: 100px;

@@ -1,11 +1,11 @@
 <template>
   <main>
-    <h1>Verify</h1>
     <img v-show='showLoader' src="https://cdn.dribbble.com/users/600626/screenshots/2944614/loading_12.gif" alt="">
     <div class="form-container">
         <form class='verify-form' @submit.prevent="submitForm">
+          <h1>Verify</h1>
           <p class='form-error' v-for="error in formErrors" :key="error" >{{error}}</p>
-          <div class="form-group">
+          <div v-if="!phoneNumber" class="form-group">
             <label for='phone-number'>Phone Number</label>
             <input 
               class='form-input' 
@@ -128,7 +128,4 @@ export default {
   .show {
     visibility: visible !important;
   }
-
-
-
 </style>

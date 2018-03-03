@@ -88,10 +88,16 @@ li
   margin: 0 10px;
 }
 
-a 
-{
-  color: #42b983;
-}
+ a
+  {
+    color: #2c3e50;
+    text-decoration: none;
+  }
+
+  a:hover 
+  {
+    text-decoration: underline #2c3e50;
+  }
 
 .form-input 
 {

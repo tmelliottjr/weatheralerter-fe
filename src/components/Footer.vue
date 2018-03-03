@@ -2,9 +2,13 @@
   <footer>
     <p id='copy'>
       &copy 2018 
-      <router-link :to="{ name: 'home' }">Simple Weather Alerts</router-link>      
+      <router-link class='footer-link' :to="{ name: 'home' }">Simple Weather Alerts</router-link>      
     </p>
-    <a id="contact" href="mailto:contact@tmelliottjr.com?subject=Simple Weather Alerter">contact@tmelliottjr.com</a>
+    <div class="footer-links">
+    <router-link class='footer-link' :to="{ name: 'faq' }">FAQ</router-link> |
+    <a class='footer-link' id="contact" href="mailto:contact@tmelliottjr.com?subject=Simple Weather Alerter">Contact</a>
+    </div>
+
   </footer>
 </template>
 
@@ -15,7 +19,8 @@ export default {
 </script>
 
 <style>
-  footer{
+  footer
+  {
     width: 100%;
     height:60px;
     bottom: 0;
@@ -25,14 +30,5 @@ export default {
     flex-direction: column;
     position: absolute;
     background-color: #a7e6d3;
-  }
-
-  #contact {
-    color: #2c3e50;
-    text-decoration: none;
-  }
-
-  #contact:hover {
-    text-decoration: underline #2c3e50;
   }
 </style>
