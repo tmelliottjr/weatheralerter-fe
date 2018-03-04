@@ -1,11 +1,9 @@
 <template>
   <footer>
     <p id='copy'>
-      &copy 2018 
-      <router-link class='footer-link' :to="{ name: 'home' }">Simple Weather Alerts</router-link>      
+      &copy 2018 Tom Elliott - Simple SMS Weather Alerts   
     </p>
     <div class="footer-links">
-    <router-link class='footer-link' :to="{ name: 'faq' }">FAQ</router-link> |
     <a class='footer-link' id="contact" href="mailto:contact@tmelliottjr.com?subject=Simple Weather Alerter">Contact</a>
     </div>
 

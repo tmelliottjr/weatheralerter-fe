@@ -1,6 +1,5 @@
 <template>
-  <section>
-    <div class="faq-container">
+  <section id='faq-container'>
       <ul>
         <li class='faq-item'>
           <h2 class='faq-q'>What is this?</h2>
@@ -18,9 +17,7 @@
             I'm not sure how anyone could feel that way, but if you do, just reply 'stop'.
           </p>
         </li>
-      </ul>
-    </div>
-    
+      </ul>    
   </section>
 </template>
 
@@ -41,17 +38,11 @@ export default {
   font-size: 18px;
 }
 
-.faq-container
+#faq-container
 {
-  max-width: 60%;
-  text-align: left;
-}
-
-section 
-{
-  margin-top: 60px;
   display: flex;
   justify-content: center;
+  text-align: left;
 }
 
 .faq-item

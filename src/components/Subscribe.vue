@@ -1,7 +1,6 @@
 <template>
   <main>
         <div class="form-container">
-      
         <form class='subscribe-form' @submit.prevent="submitForm">
           <h1>Subscribe</h1>
           <p class='form-error' v-for="error in formErrors" :key="error" >{{error}}</p>
@@ -75,7 +74,7 @@ export default {
       }).then(r => {
         if (r.status === 200 ){         
           stateBus.previousState = this.phoneNumber; 
-          this.$router.push({name:'verify'})
+          this.$router.push({name: 'verify'})
         } else {
           this.formErrors.push('An unexpected error has ocurred.');
         } 

@@ -1,8 +1,11 @@
 <template>
   <main>
-    <img v-show='showLoader' src="https://cdn.dribbble.com/users/600626/screenshots/2944614/loading_12.gif" alt="">
     <div class="form-container">
-        <form class='verify-form' @submit.prevent="submitForm">
+      <div v-if='!showForm' class="success-container">
+        <h2>Success!</h2>
+        <h4>Welcome to weather alerts!</h4> 
+      </div>
+        <form v-if="showForm" class='verify-form' @submit.prevent="submitForm">
           <h1>Verify</h1>
           <p class='form-error' v-for="error in formErrors" :key="error" >{{error}}</p>
           <div v-if="showPhone" class="form-group">
@@ -53,6 +56,7 @@ export default {
       showLoader: false,
       phoneNumber: '',
       showPhone: false,
+      showForm: true
     }
   },
   methods: {
@@ -74,7 +78,7 @@ export default {
         'phone_number': this.phoneNumber
       }).then(r => {
           // TODO: Success message
-          this.$router.push({name: 'subscribe-success'})
+          this.showForm = false;
       }).catch(err => {
         // TODO: Get actual return error
         this.formErrors.push('Unable to verify account, please try again.')

@@ -1,13 +1,31 @@
 <template>
   <div id="app">
     <app-header></app-header>
+    <main id='container'>
+      <div id="content-left">
+        <faq></faq>
+      </div>
+      <div id="content-right">
+        <div id="form-links">
+          <ul>
+            <li>
+              <router-link :to="{ name: 'home' }">Subscribe</router-link>
+            </li>
+            <li>
+               <router-link :to="{ name: 'verify' }">Verify</router-link>              
+            </li>
+          </ul>
+        </div>
+        <transition name='fade' mode='out-in'>
+          <router-view></router-view>
+          <!-- <component :is='formComp' :phoneNumber=phoneNumber @subscribe-success='onSubscribe'></component> -->
+        </transition>
+      </div>
+    </main>
+
     <!-- <transition name='fade' mode='out-in'>
-          <component :is='formComp' :phoneNumber=phoneNumber @subscribe-success='onSubscribe'></component>
-    </transition> -->
-    <router-link :to="{ name: 'verify' }">home</router-link>
-    <transition name='fade' mode='out-in'>
       <router-view :phoneNumber=phoneNumber></router-view>
-    </transition>
+    </transition> -->
     <app-footer></app-footer>
   </div>
 </template>
@@ -16,6 +34,7 @@
 
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Faq from './components/Faq'
 import Subscribe from './components/Subscribe'
 import Verify from './components/Verify'
 
@@ -33,9 +52,11 @@ export default {
     AppFooter: Footer,
     Subscribe: Subscribe,
     Verify: Verify,
+    Faq: Faq
   },
   methods: {
     onSubscribe (data) {
+      this.formComp = 'verify'
       this.phoneNumber = data;
     }
   }
@@ -43,6 +64,9 @@ export default {
 </script>
 
 <style>
+
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
 
 html {
   min-height: 100%;
@@ -69,6 +93,8 @@ body
   text-align: center;
   color: #2c3e50;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 h1, h2 
@@ -92,12 +118,33 @@ li
   {
     color: #2c3e50;
     text-decoration: none;
+    cursor: pointer;
   }
 
   a:hover 
   {
-    text-decoration: underline #2c3e50;
+    border-bottom: 1px solid #3ad1a4;
   }
+
+
+#container{
+  display: flex;
+  align-self: center;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+#content-left
+{
+  margin: 90px 0 0 0;
+  min-width: 60%;
+}
+
+#content-right
+{
+  min-width: 40%;
+  margin: 30px 0 0 0;
+}
 
 .form-input 
 {
@@ -180,6 +227,10 @@ label
             transform:skew(8deg) rotate(3deg);
 }
 
+.router-link-exact-active{
+  border-bottom: 1px solid #3ad1a4;
+}
+
   .form-group {
     display: flex;
     flex-direction: column;
@@ -201,5 +252,11 @@ label
 .fade-enter, .fade-leave-to
 /* .component-fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+
+@media screen and (max-width: 900px){
+  #content-right{
+    width: 100%;
+  }
 }
 </style>
