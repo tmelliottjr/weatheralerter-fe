@@ -48,7 +48,9 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    disableHostCheck: true,
+    public: 'http://07d13a56.ngrok.io',
   },
   performance: {
     hints: false

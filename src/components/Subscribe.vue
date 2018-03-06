@@ -100,15 +100,10 @@ export default {
 </script>
 
 <style>
-  img{
-    height: 100px;
-    width: 100px;
-  }
-
   .form-container {
     display: flex;
     justify-content: center;
-    margin: 60px 0 60px 0;
+    margin: 30px 0 60px 0;
   }
   
   .subscribe-form {

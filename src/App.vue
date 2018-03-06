@@ -131,7 +131,7 @@ li
   display: flex;
   align-self: center;
   flex-wrap: wrap;
-  width: 50%;
+  width: 960px;
 }
 
 #content-left
@@ -143,7 +143,10 @@ li
 #content-right
 {
   width: 40%;
-  margin: 30px 0 0 0;
+  margin: 80px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-input 
@@ -254,13 +257,33 @@ label
   opacity: 0;
 }
 
+@media screen and (max-width: 1200px){
+  #content-right{
+    margin: 80px 0 0 -65px;
+  }
+  #content-left{
+    width: 60%;
+    margin: 90px 0 0 65px;
+  }
+}
+
 @media screen and (max-width: 900px){
   #content-right, #content-left{
     width: 100%;
+  }
+
+  #content-right{
+    margin: 80px 0 0 0;
+  }
+
+  #content-left{
+    margin: 25px 0 0 0;
   }
 
   #container {
     width: 90%;
   }
 }
+
+
 </style>
