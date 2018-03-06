@@ -131,18 +131,18 @@ li
   display: flex;
   align-self: center;
   flex-wrap: wrap;
-  width: 80%;
+  width: 50%;
 }
 
 #content-left
 {
   margin: 90px 0 0 0;
-  min-width: 60%;
+  width: 60%;
 }
 
 #content-right
 {
-  min-width: 40%;
+  width: 40%;
   margin: 30px 0 0 0;
 }
 
@@ -201,7 +201,7 @@ label
     font-weight: bold;
     letter-spacing: 1px;
 }
-.input-button:before, .input_button:after
+.input-button:hover:before, .input_button:hover:after
 {
     content:"";
     position:absolute;
@@ -216,7 +216,7 @@ label
     -moz-border-radius:100px / 10px;
     border-radius:100px / 10px;
 }
-.input-button:after
+.input-button:hover:after
 {
     right:10px;
     left:auto;
@@ -255,8 +255,12 @@ label
 }
 
 @media screen and (max-width: 900px){
-  #content-right{
+  #content-right, #content-left{
     width: 100%;
+  }
+
+  #container {
+    width: 90%;
   }
 }
 </style>
