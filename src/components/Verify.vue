@@ -73,7 +73,7 @@ export default {
 
       //this.showLoader = true
 
-      axios.post('http://localhost:5000/verify', {
+      axios.post(API_URL+'/verify', {
         'verification_code': this.verifyCode,
         'phone_number': this.phoneNumber
       }).then(r => {

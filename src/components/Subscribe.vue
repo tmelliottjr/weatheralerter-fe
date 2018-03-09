@@ -68,7 +68,7 @@ export default {
 
       //this.showLoader = true
 
-      axios.post('http://127.0.0.1:5000/subscribe', {
+      axios.post(API_URL+'/subscribe', {
         'zip_code': this.zipCode,
         'phone_number': this.phoneNumber,
       }).then(r => {

@@ -58,6 +58,7 @@ module.exports = {
   devtool: '#eval-source-map'
 }
 
+
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
@@ -65,7 +66,8 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
-      }
+      },
+      API_URL: "'api.swa.tmelliottjr.com'",
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
@@ -77,4 +79,26 @@ if (process.env.NODE_ENV === 'production') {
       minimize: true
     })
   ])
+} else {
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      API_URL: "'http://127.0.0.1:5000'"
+    })
+  ])
 }
+
+
+// let API_URL = {
+//   production: 'api.swa.tmelliottjr.com',
+//   development: 'localhost:5000'
+// }
+
+// let env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+
+// module.exports = {
+//   plugins: [
+//     new webpack.DefinePlugin({
+//       'API_URL': API_URL[env]
+//     })
+//   ]
+// }
