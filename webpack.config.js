@@ -67,7 +67,7 @@ if (process.env.NODE_ENV === 'production') {
       'process.env': {
         NODE_ENV: '"production"'
       },
-      API_URL: "'api.swa.tmelliottjr.com'",
+      API_URL: "'http://api.swa.tmelliottjr.com'",
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
