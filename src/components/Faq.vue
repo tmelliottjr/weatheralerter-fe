@@ -3,18 +3,18 @@
       <ul>
         <li class='faq-item'>
           <h2 class='faq-q'>What is this?</h2>
-          <p class='faq-a'>Great question! This is just a simple pet project of mine, to help practice some core fundementals. I wanted to focus on decoupling the frontend (Vue.js) from the backend (Flask).</p>
+          <p class='faq-a'>Great question! This is a simple pet project I put together to help better my understanding of Vue.js and Flask. I wanted to focus on creating an SPA and a dedicated API backend.</p>
         </li>
         <li class='faq-item'>
           <h2 class="faq-q">How does it work?</h2>
-          <p class="faq-a">Simple! You enter your zip code and phone number and after verifying the phone number belongs to you, every morning at 8:00 EST you'll receive a text message with the day's weather!</p>
+          <p class="faq-a">Simple! Just enter your zip code and phone number. After verifying the phone number belongs to you, every morning at 8:00 EST you'll receive a text message with the day's forecast!</p>
         </li>
         <li>
           <h2 class="faq-q">
             What if I don't want to receive alerts anymore?
           </h2>
           <p class='faq-a'>
-            I'm not sure how anyone could feel that way, but if you do, just reply 'stop'.
+            Not a problem! Simply reply 'stop' at anytime, though I hope you'll reconsider.
           </p>
         </li>
       </ul>    
