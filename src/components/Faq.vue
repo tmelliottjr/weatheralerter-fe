@@ -7,7 +7,7 @@
         </li>
         <li class='faq-item'>
           <h2 class="faq-q">How does it work?</h2>
-          <p class="faq-a">Simple! Just enter your zip code and phone number. After verifying the phone number belongs to you, every morning at 8:00 EST you'll receive a text message with the day's forecast!</p>
+          <p class="faq-a">Simple! Just enter your zip code and phone number. After verifying the phone number belongs to you, every morning at 7:00 EST you'll receive a text message with the day's forecast!</p>
         </li>
         <li>
           <h2 class="faq-q">
