@@ -1,3 +1,3 @@
-# weatheralerter_fe
+# Simple SMS Weather Alerts
 
-> A Vue.js project
+> http://www.swa.tmelliottjr.com
