@@ -1,7 +1,7 @@
 <template>
   <footer>
     <p id='copy'>
-      &copy 2018 Tom Elliott - Simple SMS Weather Alerts   
+      &copy; 2018 Tom Elliott - Simple SMS Weather Alerts   
     </p>
     <div class="footer-links">
     <a class='footer-link' id="contact" href="mailto:contact@tomelliott.io?subject=Simple Weather Alerter">Contact</a>
