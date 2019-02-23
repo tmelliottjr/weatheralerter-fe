@@ -67,7 +67,7 @@ if (process.env.NODE_ENV === 'production') {
       'process.env': {
         NODE_ENV: '"production"'
       },
-      API_URL: "'http://api.swa.tmelliottjr.com'",
+      API_URL: "'http://api.swa.tomelliott.io'",
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
@@ -86,19 +86,3 @@ if (process.env.NODE_ENV === 'production') {
     })
   ])
 }
-
-
-// let API_URL = {
-//   production: 'api.swa.tmelliottjr.com',
-//   development: 'localhost:5000'
-// }
-
-// let env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
-
-// module.exports = {
-//   plugins: [
-//     new webpack.DefinePlugin({
-//       'API_URL': API_URL[env]
-//     })
-//   ]
-// }

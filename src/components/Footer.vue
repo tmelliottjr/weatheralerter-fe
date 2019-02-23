@@ -4,7 +4,7 @@
       &copy 2018 Tom Elliott - Simple SMS Weather Alerts   
     </p>
     <div class="footer-links">
-    <a class='footer-link' id="contact" href="mailto:contact@tmelliottjr.com?subject=Simple Weather Alerter">Contact</a>
+    <a class='footer-link' id="contact" href="mailto:contact@tomelliott.io?subject=Simple Weather Alerter">Contact</a>
     </div>
 
   </footer>
